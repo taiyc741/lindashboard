@@ -1,4 +1,5 @@
 import dash
+import flask
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
@@ -36,8 +37,8 @@ players = [['James Harden', 'Houston Rockets', '36.10', '44.2%', '36.8%', '87.9%
            ['Nikola Jokic', 'Denver Nuggets', '20.10', '51.1%', '30.7%', '82.1%'],
            ['Lou Williams', 'Los Angeles Clippers', '20.00', '42.5%', '36.1%', '87.6%']
            ]
-
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = flask.Flask(__name__)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets, server=server)
 app.layout = html.Div([
     # 指定图的id
     dcc.Graph(id='graph-with-slider'),
